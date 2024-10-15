@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #ede7e7;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        h1 {
+            color: #007bff;
+        }
+        h2, h3 {
+            margin-top: 20px;
+            color: #007bff;
+        }
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .btn-back {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-back:hover {
+            background-color: #0056b3;
+            transition: background-color 0.3s;
+        }
+        .loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <i class="fas fa-spinner fa-spin"></i> Loading...
+    </div>
+    <div class="container">
+        <h1 class="text-center">Similarity Results 🎉</h1>
+        <div class="table-responsive">
+            {{ tables|safe }}
+        </div>
+        <div class="text-center">
+            <h2>Graphical Representation 📊</h2>
+            <h3>Bar Chart</h3>
+            <img src="data:image/png;base64,{{ bar_img }}" alt="Similarity Bar Chart" class="img-fluid">
+            <h3>Pie Chart</h3>
+            <img src="data:image/png;base64,{{ pie_img }}" alt="Similarity Pie Chart" class="img-fluid">
+        </div>
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-back">Go Back <i class="fas fa-arrow-left"></i></a>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.getElementById("loading").style.display = "none";
+        };
+    </script>
+</body>
+</html>
